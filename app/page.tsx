@@ -3,14 +3,21 @@ import { Inter } from 'next/font/google'
 import styles from './page.module.css'
 import Header from '../components/Header';
 
+//  Data fetching
+const getData = async() => {
+  const data = await fetch('https://www.reddit.com/.json')
+  return data.json();
+}
 
-const inter = Inter({ subsets: ['latin'] })
+export default async function Home() {
+  const data = await getData()
+  const post = data.data.children[0].data.title
 
-export default function Home() {
   return (
     <main className={styles.main}>
       <Header />
       <div className={styles.description}>
+        <h1>{ post}</h1>
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
@@ -55,12 +62,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={inter.className}>
+          {/* <h2 className={inter.className}>
             Docs <span>-&gt;</span>
           </h2>
           <p className={inter.className}>
             Find in-depth information about Next.js features and API.
-          </p>
+          </p> */}
         </a>
 
         <a
@@ -69,10 +76,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={inter.className}>
+          {/* <h2 className={inter.className}>
             Templates <span>-&gt;</span>
           </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
+          <p className={inter.className}>Explore the Next.js 13 playground.</p> */}
         </a>
 
         <a
@@ -81,12 +88,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={inter.className}>
+          {/* <h2 className={inter.className}>
             Deploy <span>-&gt;</span>
           </h2>
           <p className={inter.className}>
             Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
+          </p> */}
         </a>
       </div>
     </main>
