@@ -1,12 +1,7 @@
-const getData = async (slug) => {
-  const post = await getDataFromCMS(slug)
-  return post
-}
+import { getAllPost } from "../../../lib/cms";
 
-
-export default async function BlogPost({ params }) {
-  const { slug } = params
-  const post  = await getData(slug)
+export default async function BlogPost() {
+  
   return (
     <div>
       Blog post
